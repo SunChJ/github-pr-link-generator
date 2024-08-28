@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub PR Rich Link Generator",
+  "version": "1.0",
+  "description": "Generate rich text links for GitHub Pull Requests",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  "action": {
+    "default_title": "Generate PR Link",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
