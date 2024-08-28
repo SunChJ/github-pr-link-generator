@@ -1,0 +1,34 @@
+# 依赖目录
+node_modules/
+
+# 构建输出
+dist/
+build/
+
+# 日志文件
+*.log
+
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 编辑器配置文件
+.vscode/
+.idea/
+
+# 环境变量文件
+.env
+
+# Chrome插件特定文件
+*.pem
+*.crx
+
+# 临时文件
+*.tmp
+*.bak
+
+# 个人配置文件（如果有）
+config.personal.js
+
+# npm包锁定文件（根据项目需求决定是否忽略）
+# package-lock.json
