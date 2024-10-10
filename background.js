@@ -1,13 +1,17 @@
-chrome.action.onClicked.addListener((tab) => {
-  if (tab.url.includes('github.com') && tab.url.includes('/pull/')) {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ['content.js']
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url.includes('github.com')) {
+    chrome.tabs.sendMessage(tabId, { action: 'checkAndAddButton' }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.log('Error sending message:', chrome.runtime.lastError.message);
+      } else if (response) {
+        console.log('Message sent successfully:', response);
+      }
     });
-  } else {
-    chrome.action.setPopup({
-      popup: 'popup.html'
-    });
-    chrome.action.openPopup();
+  }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'logMessage') {
+    console.log('Message from content script:', request.message);
   }
 });
